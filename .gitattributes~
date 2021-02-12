@@ -6,4 +6,3 @@ evaluation/models/fasttext/model.txt filter=lfs diff=lfs merge=lfs -text
 evaluation/models/fasttext/context.txt filter=lfs diff=lfs merge=lfs -text
 evaluation/models/morphoseg/model.txt filter=lfs diff=lfs merge=lfs -text
 evaluation/models/morphoseg/context.txt filter=lfs diff=lfs merge=lfs -text
-evaluation/models/* filter=lfs diff=lfs merge=lfs -text
