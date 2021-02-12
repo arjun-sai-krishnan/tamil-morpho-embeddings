@@ -5,7 +5,7 @@
 ## Table of Contents
 
 ### [1 Setup and Preprocessing](#preprocessing)
-### [2_Analogy Dataset](#dataset)
+### [2 Analogy Dataset](#dataset)
 ### [3 Training Embeddings](#training)
 ### [4 Meta-Embeddings and Evaluation](#evaluation)
 ### [5 Acknowledgements](#acknowledgements)
@@ -47,10 +47,18 @@ The fundamental component of our dataset is the file ```evaluation/analogies/ful
 
 The reason for this labelling is to enable the separation of tetrads into subword and non-subword tetrads. A tetrad is placed in the subword category if both of its constituent pairs belong to the same relation and share the same morphological relation (so the second numbers are the same positive integer). A key describing the relation represented by each id (first number) can be found at ```evaluation/analogies/relation_key.txt```.
 
-Code for assembling the tetrads from these pairs and optionally filtering out out-of-vocabulary words can be found in ```1. Analogy Dataset Setup.ipynb```.
+Code for assembling the tetrads from these pairs and optionally filtering out out-of-vocabulary words can be found in ```Analogy Dataset Setup.ipynb```.
 
 ## <a name=training></a>3 Training
 
 ## <a name=evaluation></a>4 Meta-Embeddings and Evaluation
+
+### 4.1 Meta-Embeddings
+
+The code for each of our individual meta-embedding techniques (concatenation and PCA) is available at ```evaluation/metaembeddings.py```, and the construction of our final meta-embedding (including the Merge operation) can be found in ```Meta-Embeddings and Evaluation on Analogy Dataset.ipynb```. Our four base models and our final meta-embedding can all be found in the ```models``` folder.
+
+### 4.2 Evaluation on Analogy Dataset
+
+The code for our evaluation function can be found at ```evaluation/evaluation.py```, and each of our models is evaluated on our test set in ```Meta-Embeddings and Evaluation on Analogy Dataset.ipynb```.
 
 ## <a name=acknowledgements></a>5 Acknowledgements
