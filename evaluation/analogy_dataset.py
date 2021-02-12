@@ -32,8 +32,22 @@ def clean_dset(inpath, outpath, model):
     print("Kicked", kicked_cnt, "out of", total_cnt, "pairs")
     filein.close()
     fileout.close()
+
+def extract_keys(key_path):
+    keyfile = open(key_path, 'r')
+    keys = {}
+
+    stuff = keyfile.readline()
+    while stuff != '':
+        stuff = stuff.split()
+        if stuff[0] not in ['SEMANTIC', 'MORPHOLOGICAL']:
+            keys[int(stuff[0])] = stuff[1]
+        stuff = keyfile.readline()
+
+    keyfile.close()
+    return keys
     
-def extract_dset(path):
+def extract_dset(path, key_path=None):
     filein = open(path, 'r')
     ret = {}
     stuff = filein.readline()
@@ -49,9 +63,14 @@ def extract_dset(path):
             
         ret[rel_id][rel_type].append([stuff[2], stuff[3]])
         stuff = filein.readline()
-    return ret
+    filein.close()
 
-def extract_analogy_dset(path):
+    if key_path:
+        return ret, extract_keys(key_path)
+    else:
+        return ret
+
+def extract_analogy_dset(path, key_path=None):
     filein = open(path, 'r')
     ret = {}
     stuff = filein.readline()
@@ -62,7 +81,12 @@ def extract_analogy_dset(path):
             ret[rel_id] = []
         ret[rel_id].append([stuff[1], stuff[2], stuff[3], stuff[4]])
         stuff = filein.readline()
-    return ret
+    filein.close()
+    
+    if key_path:
+        return ret, extract_keys(key_path)
+    else:
+        return ret
 
 def construct_analogy_dset(dset, subpath, nonsubpath):
     subfile = open(subpath, 'w')
@@ -146,3 +170,11 @@ def train_test_split(dset, train_path, test_path, p=0.8):
             
     train_out.close()
     test_out.close()
+
+if __name__ == '__main__':
+    print("Keys")
+    print(extract_keys('final_analogies/relation_key.txt'))
+    print("Dset alone")
+    print(extract_dset('final_analogies/full_dataset/pairs.txt'))
+    print("Dset with keys")
+    print(extract_dset('final_analogies/full_dataset/pairs.txt', 'final_analogies/relation_key.txt'))
