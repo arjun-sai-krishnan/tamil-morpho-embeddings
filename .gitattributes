@@ -1,0 +1,4 @@
+wikiextractor-master/tawiki-20200420-pages-meta-current.xml filter=lfs diff=lfs merge=lfs -text
+corpus/cleaned.txt filter=lfs diff=lfs merge=lfs -text
+corpus/cleaned_shuffled.txt filter=lfs diff=lfs merge=lfs -text
+corpus/AA/wiki_00 filter=lfs diff=lfs merge=lfs -text
