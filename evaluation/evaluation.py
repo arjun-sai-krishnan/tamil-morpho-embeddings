@@ -1,10 +1,12 @@
 import pandas as pd
 
-def eval_on_analogy_dset(model, dset, topn):
+def eval_on_analogy_dset(model, dset, topn, keys=None):
     scores = []
     for idx, rel in dset.items():
         print("Relation id: " + str(idx))
-        print("Relation example: " + ' '.join(rel[0][:2]))
+        print("Relation example: " + ' '.join(rel[0]))
+        if keys:
+            print("Relation name: " + keys[idx])
         length = len(rel)
         num_analogies = 0
         num_correct = 0
