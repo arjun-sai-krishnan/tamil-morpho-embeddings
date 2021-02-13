@@ -19,7 +19,7 @@ import torch.multiprocessing as mp
 
 import data_producer
 
-from word2atoms import skipgram_atoms, trivial_atoms, morpheme_split, stem_only
+from word2atoms import skipgram_atoms, trivial_atoms, morpheme_split
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--train", type=str, default="", help="training file")
@@ -46,6 +46,10 @@ parser.add_argument("--cuda", action='store_true', default=False, help="enable c
 parser.add_argument("--output_ctx", action='store_true', default=False, help="output context embeddings")
 parser.add_argument("--anneal", action='store_true', default=False, help="anneal the learning rate linearly to 0")
 parser.add_argument("--shuffle", action='store_true', default=False, help="shuffle the training data points")
+parser.add_argument("--atomizer", type=str, choices=['fasttext', 'morphoseg', 'word2vec'], default="word2vec", help="atomizer to use (vanilla word2vec by default, can also choose fasttext or morphoseg)")
+parser.add_argument("--minL", type=int, default=5, help="minimum possible length of n-grams to take when atomizing")
+parser.add_argument("--maxL", type=int, default=5, help="maximum possible length of n-grams to take when atomizing")
+parser.add_argument("--halfletters", action='store_true', default=False, help="whether to use half-letters/raw Unicode characters when taking n-grams, or whole Tamil letters")
 
 MAX_SENT_LEN = 1000
 
@@ -518,7 +522,18 @@ if __name__ == '__main__':
     vars(args)['file_size'] = train_file.tell()
 
     word2idx, word_list, freq = build_vocab(args)
-    morph2idx, morph_list, word2morph = build_morph(args, word2idx, word_list, freq, lambda w: morpheme_split(w, minL=1, maxL=3, use_listify=True, to_stem=True))
+    # constructing and applying atomizer to all words
+    minL = args.minL
+    maxL = args.maxL
+    use_listify = not args.halfletters
+    if args.atomizer == 'word2vec':
+        atomizer = lambda w: trivial_atoms(w)
+    elif args.atomizer == 'fasttext':
+        atomizer = lambda w: skipgram_atoms(w, minL=minL, maxL=maxL)
+    elif args.atomizer == 'morphoseg':
+        atomizer = lambda w: morpheme_split(w, minL=minL, maxL=maxL, use_listify=use_listify, to_stem=True)
+    
+    morph2idx, morph_list, word2morph = build_morph(args, word2idx, word_list, freq, atomizer)
     vars(args)['morph_size'] = len(morph2idx)
 
     ctxmorph2idx, ctxmorph_list, ctx2morph = build_morph(args, word2idx, word_list, freq, trivial_atoms)

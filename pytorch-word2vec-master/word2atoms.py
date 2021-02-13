@@ -235,24 +235,12 @@ def morpheme_split(word, minL=5, maxL=5, use_listify=False, to_stem=False):
         stout.append(st)
     
     ret = []
-    added_word = False
-
     for stuff in prefixout:
         ret.append(stuff)
-        if stuff == word:
-            added_word = True
     for stuff in stout:
         ret.append(stuff)
-        if stuff == word:
-            added_word = True
     for stuff in suffixout:
         ret.append(stuff)
-        if stuff == word:
-            added_word = True
-
-    if not added_word:
-        ret.append(word)
-        
     return ret
 
 """ words = ['மகன்தான்', 'வர', 'வர்', 'தர', 'வந்த', 'தந்த', 'வந்தவர்', 'தந்தவர்', 'வந்தவர்கள்', 'தந்தவர்கள்', 'அமைய']
