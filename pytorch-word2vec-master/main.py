@@ -110,6 +110,8 @@ def build_morph(args, word2idx, word_list, freq, atomiser):
     for i, word in enumerate(word_list):
         idxs = []
         cnt = 0
+        if i <= 20:
+            print(word, atomiser(word))
         for morph in atomiser(word):
             if morph in morph2idx:
                 idx = morph2idx[morph]
