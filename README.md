@@ -9,7 +9,6 @@ This repository holds our pipeline and code for our NAACL-SRW 2021 submission, f
 ### [2 Analogy Dataset](#dataset)
 ### [3 Training Embeddings](#training)
 ### [4 Meta-Embeddings and Evaluation](#evaluation)
-### [5 Acknowledgements](#acknowledgements)
 
 ## <a name=preprocessing></a>1 Setup and Preprocessing
 
@@ -54,7 +53,9 @@ Code for assembling the tetrads from these pairs and optionally filtering out ou
 
 Our code for training our individual models can be found in the folder ```pytorch-word2vec-master``` and is based on Tzu-Ray Su's [word2vec repository](https://github.com/ray1007/pytorch-word2vec). Our primary addition is the introduction of various atomizers, including n-gram atomizations as in FastText and morphological atomizations. These atomizers can be found at ```pytorch-word2vec-master/word2atoms.py```. The atomizers incorporating morphological segmentation use the rules-based segmenter in ```pytorch-word2vec-master/tamil_segmenter_modified.py```. To construct this segmenter, we took [this rules-based stemmer](https://github.com/rdamodharan/tamil-stemmer) developed by Damodharan Rajalingam in Snowball and converted it to Python using Florian Brucker's [sbl2py repository](https://github.com/torfsen/sbl2py). We then modified the stemmer by hand so that it would record each morpheme as it stripped it away to obtain the stem.
 
-We list below commands for training the three base models evaluated in our paper on a GPU.
+We list below commands for training the three base models evaluated in our paper on a GPU. The following setup command should be run first:
+
+```python3 setup.py build_ext --inplace```
 
 **Trivial atomization:** this is just standard skipgram word2vec.
 
@@ -77,5 +78,3 @@ The code for each of our individual meta-embedding techniques (concatenation and
 ### 4.2 Evaluation on Analogy Dataset
 
 The code for our evaluation function can be found at ```evaluation/evaluation.py```, and each of our models is evaluated on our test set in ```Meta-Embeddings and Evaluation on Analogy Dataset.ipynb```.
-
-## <a name=acknowledgements></a>5 Acknowledgements
