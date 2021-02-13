@@ -1,6 +1,7 @@
 # tamil-morpho-embeddings
 
 ### Welcome
+This repository holds our pipeline and code for our NAACL-SRW 2021 submission, for the paper "Morphology-Aware Meta-Embeddings for Tamil". Here we detail and document the steps of our meta-embeddings pipeline, as shown in the table of contents below, and provide our data as well as source. We also provide here a number of Testing and Evaluation ipynb notebooks that can be used to generate analogies from word pairs, evaluate embeddings on our analogy dataset, and train new embeddings with the methods we describe in the paper. 
 
 ## Table of Contents
 
