@@ -63,7 +63,7 @@ We list below commands for training the three base models evaluated in our paper
 
 ```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes [NUM_PROCESSES] --atomizer fasttext --minL 5 --maxL 5 --halfletters```
 
-**Morphemes + stem (1-3)-grams (MorphoSeg model):** this takes the stem and constituent morphemes of the word as well as character (1-3)-grams of the stem. Here we work with ``whole letters" i.e. each Tamil letter is treated as a single letter.
+**Morphemes + stem (1-3)-grams (MorphoSeg model):** this takes the stem and constituent morphemes of the word as well as character (1-3)-grams of the stem. Here we work with "whole letters" i.e. each Tamil letter is treated as a single letter.
 
 ```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes [NUM_PROCESSES] --atomizer morphoseg --minL 1 --maxL 3```
 
