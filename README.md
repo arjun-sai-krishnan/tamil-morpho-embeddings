@@ -55,15 +55,15 @@ Our code for training our individual models can be found in the folder ```pytorc
 
 We list below commands for training the three base models evaluated in our paper on a GPU.
 
-Trivial atomization: this is just standard skipgram word2vec.
+**Trivial atomization:** this is just standard skipgram word2vec.
 
 ```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer word2vec```
 
-Character 5-grams (FastText model): this takes character 5-grams of the word, and the entire word itself as atoms. Here we break the word down into "half-letters" when taking n-grams i.e. we break the word down into its full Unicode representation so that many characters that appear to be single Tamil letters are actually being treated as two "half-letters".
+**Character 5-grams (FastText model):** this takes character 5-grams of the word, and the entire word itself as atoms. Here we break the word down into "half-letters" when taking n-grams i.e. we break the word down into its full Unicode representation so that many characters that appear to be single Tamil letters are actually being treated as two "half-letters".
 
 ```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer fasttext --minL 5 --maxL 5 --halfletters```
 
-Morphemes + stem (1-3)-grams (MorphoSeg model): this takes the stem and constituent morphemes of the word as well as character (1-3)-grams of the stem. Here we work with ``whole letters" i.e. each Tamil letter is treated as a single letter.
+**Morphemes + stem (1-3)-grams (MorphoSeg model):** this takes the stem and constituent morphemes of the word as well as character (1-3)-grams of the stem. Here we work with ``whole letters" i.e. each Tamil letter is treated as a single letter.
 
 ```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer morphoseg --minL 1 --maxL 3```
 
