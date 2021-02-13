@@ -51,6 +51,22 @@ Code for assembling the tetrads from these pairs and optionally filtering out ou
 
 ## <a name=training></a>3 Training
 
+Our code for training our individual models can be found in the folder ```pytorch-word2vec-master``` and is based on Tzu-Ray Su's [word2vec repository](https://github.com/ray1007/pytorch-word2vec). Our primary addition is the introduction of various atomizers, including n-gram atomizations as in FastText and morphological atomizations. These atomizers can be found at ```pytorch-word2vec-master/word2atoms.py```. The atomizers incorporating morphological segmentation use the rules-based segmenter in ```pytorch-word2vec-master/tamil_segmenter_modified.py```. To construct this segmenter, we took [this rules-based stemmer](https://github.com/rdamodharan/tamil-stemmer) developed by Damodharan Rajalingam in Snowball and converted it to Python using Florian Brucker's [sbl2py repository](https://github.com/torfsen/sbl2py). We then modified the stemmer by hand so that it would record each morpheme as it stripped it away to obtain the stem.
+
+We list below commands for training the three base models evaluated in our paper on a GPU.
+
+Trivial atomization: this is just standard skipgram word2vec.
+
+```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer word2vec```
+
+Character 5-grams (FastText model): this takes character 5-grams of the word, and the entire word itself as atoms. Here we break the word down into "half-letters" when taking n-grams i.e. we break the word down into its full Unicode representation so that many characters that appear to be single Tamil letters are actually being treated as two "half-letters".
+
+```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer fasttext --minL 5 --maxL 5 --halfletters```
+
+Morphemes + stem (1-3)-grams (MorphoSeg model): this takes the stem and constituent morphemes of the word as well as character (1-3)-grams of the stem. Here we work with ``whole letters" i.e. each Tamil letter is treated as a single letter.
+
+```python3 main.py --cuda --train [CORPUS_PATH] --output [INPUT_VECTOR_PATH] --atomoutput [INPUT_ATOM_VECTOR_PATH] --ctxoutput [CONTEXT_VECTOR_PATH] --ctxatomoutput [CONTEXT_ATOM_VECTOR_PATH] --losslog [LOSSES_PATH] --cbow 0 --size 300 --window 5 --sample 1e-4 --negative 5 --iter 5 --batch_size 100 --anneal --processes 3 --atomizer morphoseg --minL 1 --maxL 3```
+
 ## <a name=evaluation></a>4 Meta-Embeddings and Evaluation
 
 ### 4.1 Meta-Embeddings
