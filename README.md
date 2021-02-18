@@ -55,6 +55,7 @@ Below is the list of numbered analogy pair categories with a description, name, 
 SEMANTIC 
   ----
 No.| Category | Example
+---| -------- | ------
 0 |male-female |
 1 |me-my |
 2 | profession-product|  
