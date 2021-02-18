@@ -49,38 +49,38 @@ The reason for this labelling is to enable the separation of tetrads into subwor
 
 Code for assembling the tetrads from these pairs and optionally filtering out out-of-vocabulary words can be found in ```Analogy Dataset Setup.ipynb```.
 
-Below is the list of numbered relations with a description, name, and example.
+Below is the list of numbered relations with the relation name and example.
 
-### 2.1 Semantic
+### 2.1 Semantic Relations
 No.| Category | Example
 ---| -------- | ------
-0 |male-female |
-1 |me-my |
-2 | profession-product|  
-3 | fruit_A-tree_A |
-4 | verb_form-noun_form |
-5 | animal-young |
-6 | kin_elder-kin_young (same gender) |
-7 | kin_elder_male-kin_young_female |
-8 | kin_elder_female-kin_young_male |
-9 | positive-negative |
+0 |male-female | ராஜா ராணி 'king/queen'
+1 |me-my | அவன் அவனுடைய 'he/his'
+2 | profession-product| நெசவாளர் துணி 'weaver/cloth'
+3 | fruit_A-tree_A | கொய்யா கொய்யாமரம் 'guava/guava-tree'
+4 | verb_form-noun_form | யோசிக்க யோசனை 'to think/thought'
+5 | animal-young |மாடு கன்று 'cow/calf'
+6 | kin_elder-kin_young (same gender) | மாமா மருமகன் 'maternal uncle/nephew'
+7 | kin_elder_male-kin_young_female | தந்தை மகள் 'father/daughter'
+8 | kin_elder_female-kin_young_male |பாட்டி பேரன் 'grandmother/grandson'
+9 | positive-negative |வெற்றி தோல்வி 'victory/loss'
 
-### 2.2 Morphological
+### 2.2 Morphological Relations
 No.| Category | Example
 ---| -------- | ------
-10 | nom-acc | 
-11 | nom-dat |
-12 | adjective-adverb |
-13 | verb-past_respect |
-14 | past-past_completive1_inanimate |
-15 | verb-for_those_who_verb |
-16 | past-past_completive2_male |
-17 | past-past_completive2_female |
-18 | male_past-female_past |
-19 | verb-doer_female |
-20 | verb-doer_male |
-21 | verb-passive_plural_inanimate |
-22 | verb-past_inanimate | 
+10 | nom-acc | அவன் அவனை 'he/him'
+11 | nom-dat | அவள் அவளுக்கு 'she/to her'
+12 | adjective-adverb | மகிழ்ச்சியான மகிழ்ச்சியாக 'happy/happily'
+13 | verb-past_respect | பறக்க பறந்தார் 'fly/they flew'
+14 | past-past_completive1_inanimate | மாறியது மாறிபோனது 'changed/changed(completive)'
+15 | verb-for_those_who_verb | பார்க்க பார்த்தவர்களுக்காக 'to see/for the sake of those who saw'
+16 | past-past_completive2_male | பண்ணான் பண்ணிவிட்டான் 'he did/he did(completive)'
+17 | past-past_completive2_female |பண்ணாள் பண்ணிவிட்டாள்  'she did/he did(completive)'
+18 | male_past-female_past | பண்ணான் பண்ணாள் 'he did/she did'
+19 | verb-doer_female | பாட பாடியவள் 'to sing/the female who sang'
+20 | verb-doer_male | பாட பாடியவன் 'to sing/the female who sang'
+21 | verb-passive_plural_inanimate |காண காணப்பட்டன 'to see/they were seen'
+22 | verb-past_inanimate | சொல்ல சொன்னது 'to say/that which was said'
 
 
 
