@@ -49,11 +49,9 @@ The reason for this labelling is to enable the separation of tetrads into subwor
 
 Code for assembling the tetrads from these pairs and optionally filtering out out-of-vocabulary words can be found in ```Analogy Dataset Setup.ipynb```.
 
-Below is the list of numbered analogy pair categories with a description, name, and example.
+Below is the list of numbered relations with a description, name, and example.
 
-
-SEMANTIC 
-  ----
+### 2.1 Semantic
 No.| Category | Example
 ---| -------- | ------
 0 |male-female |
@@ -67,8 +65,7 @@ No.| Category | Example
 8 | kin_elder_female-kin_young_male |
 9 | positive-negative |
 
-MORPHOLOGICAL
-----------
+### 2.2 Morphological
 No.| Category | Example
 ---| -------- | ------
 10 | nom-acc | 
