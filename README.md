@@ -67,20 +67,23 @@ No.| Category | Example
 8 | kin_elder_female-kin_young_male |
 9 | positive-negative |
 
-MORPHOLOGICAL 
-10 nom-acc
-11 nom-dat
-12 adjective-adverb
-13 verb-past_respect
-14 past-past_completive1_inanimate
-15 verb-for_those_who_verb
-16 past-past_completive2_male
-17 past-past_completive2_female
-18 male_past-female_past
-19 verb-doer_female
-20 verb-doer_male
-21 verb-passive_plural_inanimate
-22 verb-past_inanimate
+MORPHOLOGICAL
+----------
+No.| Category | Example
+---| -------- | ------
+10 | nom-acc | 
+11 | nom-dat |
+12 | adjective-adverb |
+13 | verb-past_respect |
+14 | past-past_completive1_inanimate |
+15 | verb-for_those_who_verb |
+16 | past-past_completive2_male |
+17 | past-past_completive2_female |
+18 | male_past-female_past |
+19 | verb-doer_female |
+20 | verb-doer_male |
+21 | verb-passive_plural_inanimate |
+22 | verb-past_inanimate | 
 
 
 
