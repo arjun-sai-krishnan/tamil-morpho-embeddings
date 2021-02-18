@@ -51,18 +51,29 @@ Code for assembling the tetrads from these pairs and optionally filtering out ou
 
 Below is the list of numbered analogy pair categories with a description, name, and example.
 
-|SEMANTIC |
+
+SEMANTIC 
   ----
 |0 |male-female |
-1 me-my
-2 profession-product
-3 fruit_A-tree_A
-4 verb_form-noun_form
-5 animal-young
-6 kin_elder-kin_young (same gender)
-7 kin_elder_male-kin_young_female
-8 kin_elder_female-kin_young_male
-9 positive-negative
+--- ---
+|1 |me-my |
+--- --- 
+|2 | profession-product | 
+--- ---
+|3 | fruit_A-tree_A | 
+--- --- 
+|4 | verb_form-noun_form |
+--- ---
+|5 | animal-young |
+--- ---
+|6 | kin_elder-kin_young (same gender) |
+--- ---
+|7 | kin_elder_male-kin_young_female |
+--- ---
+|8 | kin_elder_female-kin_young_male |
+--- ---
+|9 | positive-negative |
+--- ---
 
 MORPHOLOGICAL 
 10 nom-acc
