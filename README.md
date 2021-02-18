@@ -54,25 +54,25 @@ Below is the list of numbered analogy pair categories with a description, name, 
 
 SEMANTIC 
   ----
-|0 |male-female |
+0 |male-female 
 --- ---
-|1 |me-my |
+1 |me-my 
 --- --- 
-|2 | profession-product | 
+2 | profession-product  
 --- ---
-|3 | fruit_A-tree_A | 
---- --- 
-|4 | verb_form-noun_form |
+3 | fruit_A-tree_A 
 --- ---
-|5 | animal-young |
+4 | verb_form-noun_form 
 --- ---
-|6 | kin_elder-kin_young (same gender) |
+5 | animal-young 
 --- ---
-|7 | kin_elder_male-kin_young_female |
+6 | kin_elder-kin_young (same gender) 
 --- ---
-|8 | kin_elder_female-kin_young_male |
+7 | kin_elder_male-kin_young_female 
 --- ---
-|9 | positive-negative |
+8 | kin_elder_female-kin_young_male 
+--- ---
+9 | positive-negative 
 --- ---
 
 MORPHOLOGICAL 
