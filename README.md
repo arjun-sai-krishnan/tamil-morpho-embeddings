@@ -49,6 +49,38 @@ The reason for this labelling is to enable the separation of tetrads into subwor
 
 Code for assembling the tetrads from these pairs and optionally filtering out out-of-vocabulary words can be found in ```Analogy Dataset Setup.ipynb```.
 
+Below is the list of numbered analogy pair categories with a description, name, and example.
+
+|SEMANTIC |
+  ----
+|0 |male-female |
+1 me-my
+2 profession-product
+3 fruit_A-tree_A
+4 verb_form-noun_form
+5 animal-young
+6 kin_elder-kin_young (same gender)
+7 kin_elder_male-kin_young_female
+8 kin_elder_female-kin_young_male
+9 positive-negative
+
+MORPHOLOGICAL 
+10 nom-acc
+11 nom-dat
+12 adjective-adverb
+13 verb-past_respect
+14 past-past_completive1_inanimate
+15 verb-for_those_who_verb
+16 past-past_completive2_male
+17 past-past_completive2_female
+18 male_past-female_past
+19 verb-doer_female
+20 verb-doer_male
+21 verb-passive_plural_inanimate
+22 verb-past_inanimate
+
+
+
 ## <a name=training></a>3 Training
 
 Our code for training our individual models can be found in the folder ```pytorch-word2vec-master``` and is based on Tzu-Ray Su's [word2vec repository](https://github.com/ray1007/pytorch-word2vec). Our primary addition is the introduction of various atomizers, including n-gram atomizations as in FastText and morphological atomizations. These atomizers can be found at ```pytorch-word2vec-master/word2atoms.py```. The atomizers incorporating morphological segmentation use the rules-based segmenter in ```pytorch-word2vec-master/tamil_segmenter_modified.py```. To construct this segmenter, we took [this rules-based stemmer](https://github.com/rdamodharan/tamil-stemmer) developed by Damodharan Rajalingam in Snowball and converted it to Python using Florian Brucker's [sbl2py repository](https://github.com/torfsen/sbl2py). We then modified the stemmer by hand so that it would record each morpheme as it stripped it away to obtain the stem.
